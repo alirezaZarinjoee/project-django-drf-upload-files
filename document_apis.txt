@@ -1,0 +1,134 @@
+document API
+
+
+
+		↓↓↓↓↓↓↓↓↓(((((((((((accounting)))))))))))↓↓↓↓↓↓↓↓↓
+
+
+----------------------------------------------------------------------------------------------------------
+*Registration
+URL: /accounting/register/
+
+Method: POST
+
+Request parameters: email, password, repassword
+
+Successful response: 201 Created with new user data and redirect to URL: /accounting/verify
+
+Error response: 400 Bad Request with error message
+---------------------------------------------------------------------------------------------------------
+
+*Verification
+URL: /accounting/verify/
+
+Method: POST
+
+Request parameters: code
+
+Successful response: 201 Created with message "Registration was successful" and user token
+
+Error response: 400 Bad Request with error message
+---------------------------------------------------------------------------------------------------------
+*Login
+URL: /accounting/login/
+
+Method: POST
+
+Request parameters: email, password
+
+Successful response: 201 Created with user token
+
+Error response: 400 Bad Request with error message
+---------------------------------------------------------------------------------------------------------
+*Logout
+URL: /accounting/logout/
+
+Method: GET
+
+Successful response: 200 OK with message "Logout was successful"
+
+Error response: 400 Bad Request with error message
+
+
+Note: To use this API, you must authenticate. Requests sent without authentication will not respond.
+---------------------------------------------------------------------------------------------------------
+*Change Password
+URL: /accounting/change_password/
+
+Method: POST
+
+Request parameters: email, password, repassword
+
+Successful response: 200 OK with message "Authentication code sent successfully" and redirect to URL: /accounting/verify
+
+Error response: 400 Bad Request or 404 Not Found with error message
+---------------------------------------------------------------------------------------------------------
+
+		↓↓↓↓↓↓↓↓↓(((((((((((uploder)))))))))))↓↓↓↓↓↓↓↓↓
+
+
+-----------------------------------------------------------------------------------------------
+
+**Image Metadata
+
+*List and Create Images
+
+URL: /uploder /images/
+Method: GET, POST
+Description: With this API, you can see the list of all images uploaded by the user or upload a new image.
+Request parameters for upload: upload_file
+
+
+
+
+*Details, Update, and Delete Image
+
+URL: /uploder /images/int:pk/
+Method: GET, PUT, DELETE
+Description: With this API, you can view the details of a specific image, update the image, or delete it.
+
+
+
+*Download Image
+
+URL: /uploder /images/int:pk/download/
+Method: GET
+Description: With this API, you can download a specific image.
+
+
+Note: To use these APIs, you must authenticate. Requests sent without authentication will not respond.
+
+----------------------------------------------------------------------------------------------------
+
+
+
+**Document Metadata
+
+*List and Create Documents
+
+URL: /uploder /documents/
+Method: GET, POST
+Description: With this API, you can see the list of all documents uploaded by the user or upload a new document.
+Request parameters for upload: upload_file
+
+
+
+*Details, Update, and Delete Document
+
+URL: /uploder /documents/int:pk/
+Method: GET, PUT, DELETE
+Description: With this API, you can view the details of a specific document, update the document, or delete it.
+
+
+
+*Download Document
+
+URL: /uploder /documents/int:pk/download/
+Method: GET
+Description: With this API, you can download a specific document.
+
+
+Note: To use these APIs, you must authenticate. Requests sent without authentication will not respond.
+
+----------------------------------------------------------------------------------------------------
+
